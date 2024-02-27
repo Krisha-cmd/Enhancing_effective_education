@@ -2,6 +2,7 @@ import 'package:effective_education/components/button.dart';
 import 'package:effective_education/components/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:effective_education/pages/signup_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -12,6 +13,18 @@ class LoginPage extends StatelessWidget {
     final passwordController = TextEditingController();
 
     void signUserIn() {}
+
+    void navigateTo(page) {
+      Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        ),
+      );
+    }
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -32,9 +45,10 @@ class LoginPage extends StatelessWidget {
                         color: Colors.purple,
                       ),
                       child: Center(
-                        child: Image.asset('lib/images/mitadt.png',
-                        height: 120,)
-                      ),
+                          child: Image.asset(
+                        'lib/images/mitadt.png',
+                        height: 120,
+                      )),
                     ),
                   ],
                 ),
@@ -79,12 +93,17 @@ class LoginPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        "Forgot Password?",
-                        style: TextStyle(
-                          fontFamily: 'Calibri',
-                          color: Colors.blue,
-                          fontSize: 14,
+                      InkWell(
+                        onTap: () {
+                          navigateTo(SignUpPage());
+                        },
+                        child: Text(
+                          "Forgot Password?", //TODO: forgot password page
+                          style: TextStyle(
+                            fontFamily: 'Calibri',
+                            color: Colors.blue,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                     ],
@@ -97,6 +116,7 @@ class LoginPage extends StatelessWidget {
                 //sign in button
                 MyButton(
                   onTap: signUserIn,
+                  hintText: "Sign In",
                 ),
 
                 SizedBox(
@@ -184,10 +204,15 @@ class LoginPage extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
-                          child: Text(
-                            "Sign up now",
-                            style: TextStyle(
-                                color: Colors.blue, fontFamily: 'Calibri'),
+                          child: InkWell(
+                            onTap: () {
+                              navigateTo(SignUpPage());
+                            },
+                            child: Text(
+                              "Sign up now",
+                              style: TextStyle(
+                                  color: Colors.blue, fontFamily: 'Calibri'),
+                            ),
                           ),
                         )
                       ],
