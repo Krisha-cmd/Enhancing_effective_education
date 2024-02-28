@@ -14,7 +14,7 @@ class MyButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal:25),
-        decoration: BoxDecoration(color:Colors.purple,
+        decoration: BoxDecoration(color:Color.fromARGB(255, 88, 57, 155),
         borderRadius: BorderRadius.circular(8)),
         child: Center(child: Text(
           '$hintText',

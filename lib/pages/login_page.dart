@@ -42,7 +42,7 @@ class LoginPage extends StatelessWidget {
                       margin: EdgeInsets.all(0),
                       padding: EdgeInsets.symmetric(vertical: 30),
                       decoration: BoxDecoration(
-                        color: Colors.purple,
+                        color: Color.fromARGB(255, 88, 57, 155),
                       ),
                       child: Center(
                           child: Image.asset(
